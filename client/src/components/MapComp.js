@@ -1,9 +1,9 @@
 import React from 'react'
-import { GoogleMap, useJsApiLoader, useLoadScript, Marker } from '@react-google-maps/api';
+import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
 
 const containerStyle = {
-  width: "400%",
-  height: "400vh"
+  width: "60vw",
+  height: "80vh"
 };
 
 const center = {
@@ -27,8 +27,7 @@ function MapComp() {
         zoom={12}
         options={{clickableIcons: false}}
       >
-        { /* Child components, such as markers, info windows, etc. */}
-        <Marker position={{center}}/>
+        
       </GoogleMap>
     );
   }
