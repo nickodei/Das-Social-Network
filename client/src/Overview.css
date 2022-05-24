@@ -1,0 +1,73 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+
+
+.col1 {
+  overflow-y: scroll;
+  direction: rtl;
+  max-height: 93vh;
+  display: block;
+  color: black;
+  align-items:baseline;
+  justify-content: left;
+}
+
+.col2{
+  background-color: #282c34;
+  min-height: 93vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.hide-col{
+  color:#282c34;
+  background-color: #282c34;
+}
+
+.rowMap{
+  justify-content: left;
+  overflow-y: scroll;
+  direction: rtl;
+  max-height: 100vh;
+  display: block;
+  color: black;
+  align-items:baseline;
+  justify-content: left;
+}
+
+.test {
+  background-color: aquamarine;
+  width: 100vw;
+}

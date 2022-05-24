@@ -7,7 +7,7 @@ class NavbarComp extends Component {
             <div>
                 <Navbar bg="dark" variant="dark" fixed="top">
                     <Container fluid>
-                        <Navbar.Brand href="#overview">Restaurant Finder</Navbar.Brand>
+                        <Navbar.Brand href="#overview">restaurant finder</Navbar.Brand>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav">
                             <Nav>
@@ -18,7 +18,6 @@ class NavbarComp extends Component {
                                     <NavDropdown.Item href="#action4">
                                         Cuisine
                                     </NavDropdown.Item>
-                                    <NavDropdown.Divider />
                                     <NavDropdown.Item href="#action5">
                                         Something else here
                                     </NavDropdown.Item>
@@ -34,8 +33,8 @@ class NavbarComp extends Component {
                                 </Form>
                             </Nav>
                             <Nav className="ms-auto">
-                                <Nav.Link href="#home">Overview</Nav.Link>
-                                <Nav.Link href="#link">Restaurants</Nav.Link>
+                                <Nav.Link href="#overview">Overview</Nav.Link>
+                                <Nav.Link href="#restaurants">Restaurants</Nav.Link>
                                 <Nav.Link href="#about">About</Nav.Link>
                                 <Nav.Link href="#impressum">Impressum</Nav.Link>
                             </Nav>
