@@ -7,7 +7,7 @@ class NavbarComp extends Component {
             <div>
                 <Navbar bg="dark" variant="dark" fixed="top">
                     <Container fluid>
-                        <Navbar.Brand href="#overview">restaurant finder</Navbar.Brand>
+                        <Navbar.Brand href="#overview">Restaurant Finder</Navbar.Brand>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav">
                             <Nav>

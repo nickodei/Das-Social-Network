@@ -10,7 +10,7 @@ function Overview() {
       <header className="App-header">
         <Container>
           <Row xs={4} md={8}>
-            <Col></Col>
+            <Col><RestaurantListComp/></Col>
             <Col md={{ span: 7}} ><MapComp /></Col>
           </Row>
         </Container>

@@ -4,12 +4,19 @@ import './index.css';
 import Overview from './Overview';
 import reportWebVitals from './reportWebVitals';
 import NavbarComp from './components/NavbarComp';
+import RestaurantListComp from './components/RestaurantListComp';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <NavbarComp />
     <Overview />
+    
+
+    
+    
+    
+    
   </React.StrictMode>
 );
 
