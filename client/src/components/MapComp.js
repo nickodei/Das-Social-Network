@@ -16,6 +16,7 @@ function MapComp() {
     googleMapsApiKey: "AIzaSyC8DeAFoQJQRtWbSMaWlIsfdA6r896GOxw"
   });
 
+  
 
   if (!isLoaded) {
     return <h2>Loading...</h2>;
@@ -27,10 +28,24 @@ function MapComp() {
         zoom={12}
         options={{clickableIcons: false}}
       >
+       {/* markers */}
+       <Marker
+          key={0}
+          position={center}
+         
+        />
+        
         
       </GoogleMap>
     );
   }
+  
 }
+
+
+
+
+
+
 
 export default MapComp
