@@ -32,10 +32,7 @@ function MapComp() {
        <Marker
           key={0}
           position={center}
-         
         />
-        
-        
       </GoogleMap>
     );
   }

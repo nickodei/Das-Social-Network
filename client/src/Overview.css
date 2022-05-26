@@ -29,15 +29,12 @@
 }
 
 
-
 .col1 {
-  overflow-y: scroll;
   direction: rtl;
   max-height: 93vh;
   display: block;
   color: black;
-  align-items:baseline;
-  justify-content: left;
+  overflow-y: scroll;
 }
 
 .col2{
@@ -48,7 +45,6 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
 }
 
 .hide-col{

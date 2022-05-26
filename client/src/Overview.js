@@ -9,7 +9,7 @@ function Overview() {
     <div>
       <header className="App-header" id='overview'>
         <Navbar />
-        <div className='hide-col'>s</div>
+        <div style={{marginTop: 45}}></div>
         <Container fluid >
           <Row xs={4} md={8}>
             <Col className="col1" xs={{ span: 4, offset: -5 }} >
