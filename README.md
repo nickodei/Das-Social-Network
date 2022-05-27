@@ -1,7 +1,7 @@
 # Das-Social-Network
 
 # Installationanweisung
-
+Do not install yet
 Datenbank:
 
 1. Sql Express Driver muss gedownloaded werden: https://go.microsoft.com/fwlink/p/?linkid=866658
