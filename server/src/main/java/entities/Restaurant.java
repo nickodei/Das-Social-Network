@@ -1,38 +1,55 @@
-package hello.world.demo;
+package entities;
 
-import java.util.List;
+import javax.persistence.*;
 
-public class Restaurant {
+
+@Entity
+@javax.persistence.Table(name = "restaurant")
+public class Restaurant
+{
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @Column(name="id")
+    private int id;
+
+    @Column(name="name")
     private String name;
 
-    //this will be the id in the database and the that will be provided by the frontEnd, so that the Restaurant can be recognized
-    private int id;
-    private String image;
+    @Lob
+    @Column(name = "image", columnDefinition = "LONGBLOB", insertable = false, updatable = false)
+    private byte[] image;
+
+    @Column(name = "image")
     private String address;
+
+    @Column(name = "contact_info")
     private String contactInfo;
+
+    @Column(name = "price_category")
     private PriceCategory priceCategory;
+
+    @OneToOne(targetEntity = Menu.class)
     private Menu menu;
+
+    @OneToOne(targetEntity = TablePlan.class)
     private TablePlan tablePlan;
+
+    @OneToOne(targetEntity = Schedule.class)
     private Schedule schedule;
+
+    @OneToOne(targetEntity = Marker.class)
     private Marker marker;
 
-    //this constructor should be used for mok classes
-    public Restaurant(String name,
-                      int id) {
+    // for hibernate
+    public Restaurant() {}
+
+    // for mocking
+    public Restaurant(String name) {
         this.name = name;
-        this.id = id;
     }
 
-    public Restaurant(String name,
-                      int id,
-                      String image,
-                      String address,
-                      String contactInfo,
-                      PriceCategory priceCategory,
-                      Menu menu,
-                      TablePlan tablePlan,
-                      Schedule schedule,
-                      Marker marker) {
+    public Restaurant(int id, String name, byte[] image, String address, String contactInfo, PriceCategory priceCategory,
+                      Menu menu, TablePlan tablePlan, Schedule schedule, Marker marker) {
         this.name = name;
         this.id = id;
         this.image = image;
@@ -53,7 +70,6 @@ public class Restaurant {
         return schedule;
     }
 
-
     public Marker getMarker() {
         return marker;
     }
@@ -66,7 +82,7 @@ public class Restaurant {
         return id;
     }
 
-    public String getImage() {
+    public byte[] getImage() {
         return image;
     }
 
@@ -96,7 +112,7 @@ public class Restaurant {
         this.id = id;
     }
 
-    public void setImage(String image) {
+    public void setImage(byte[] image) {
         this.image = image;
     }
 
