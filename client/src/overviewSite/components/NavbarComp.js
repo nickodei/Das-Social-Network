@@ -1,24 +1,28 @@
 import React, { Component } from 'react';
 import { Navbar, Nav, NavDropdown, Container, Form, FormControl, Button } from 'react-bootstrap';
+import '../Restaurants.css';
 
 class NavbarComp extends Component {
+    state = {
+        val: ""
+      };
     render() {
         return (
             <div>
                 <Navbar bg="dark" variant="dark" fixed="top">
                     <Container fluid>
-                        <Navbar.Brand href="#overview">Restaurant Finder</Navbar.Brand>
+                        <Navbar.Brand href="#overview" className='picture-animation'>Restaurant Finder</Navbar.Brand>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav">
                             <Nav>
                                 <NavDropdown
                                     title="Filter"
                                 >
-                                    <NavDropdown.Item href="#action3">Rating</NavDropdown.Item>
-                                    <NavDropdown.Item href="#action4">
+                                    <NavDropdown.Item onClick={() => {filter("Rating")}}>Rating</NavDropdown.Item>
+                                    <NavDropdown.Item onClick={() => {filter("Cuisine")}}>
                                         Cuisine
                                     </NavDropdown.Item>
-                                    <NavDropdown.Item href="#action5">
+                                    <NavDropdown.Item onClick={() => {filter("Some filter")}}>
                                         Something else here
                                     </NavDropdown.Item>
                                 </NavDropdown>
@@ -27,9 +31,10 @@ class NavbarComp extends Component {
                                         type="search"
                                         placeholder="Type your search here..."
                                         className="me-3"
-                                        aria-label="Search"
+                                        value={this.state.val}
+                                        onChange={e => this.setState({ val: e.target.value })}
                                     />
-                                    <Button variant="outline-light">Search</Button>
+                                    <Button variant="outline-light" onClick={() => {search(this.state.val)}}>Search</Button>
                                 </Form>
                             </Nav>
                             <Nav className="ms-auto">
@@ -44,6 +49,20 @@ class NavbarComp extends Component {
             </div >
         );
     }
+}
+
+async function search(request){
+    let fetchRe = await fetch('https://catfact.ninja/fact');
+
+    let result = await fetchRe.json();
+    
+    console.log(result.fact);
+    console.log(request);
+}
+
+function filter(filter){
+    console.log(filter);
+
 }
 
 export default NavbarComp;
