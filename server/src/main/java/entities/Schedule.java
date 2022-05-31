@@ -1,21 +1,27 @@
-package hello.world.demo;
+package entities;
 
+import javax.persistence.*;
 import java.sql.Time;
 
+@Entity
+@javax.persistence.Table(name = "table_scheduler")
 public class Schedule {
-    private final int id;
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @Column(name="id")
+    private int id;
+
+    @Column(name = "opening_hour")
     private Time openingHour;
+
+    @Column(name = "closing_hour")
     private Time closingHour;
 
-    public Schedule(int id, Time openingHour, Time closingHour) {
-        this.id = id;
+    public Schedule() {}
+
+    public Schedule(Time openingHour, Time closingHour) {
         this.openingHour = openingHour;
         this.closingHour = closingHour;
-    }
-
-
-    public int getId() {
-        return id;
     }
 
     public Time getOpeningHour() {
@@ -32,5 +38,13 @@ public class Schedule {
 
     public void setClosingHour(Time closingHour) {
         this.closingHour = closingHour;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
