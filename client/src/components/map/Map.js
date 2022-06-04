@@ -1,9 +1,12 @@
+import './Map.css'
 import React from 'react'
 import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
 
 const containerStyle = {
-  width: "60vw",
-  height: "80vh"
+  width: "calc(100% - 20px)",
+  height: "calc(100% - 20px)",
+  top: "10px",
+  left: "10px"
 };
 
 const center = {
@@ -11,12 +14,10 @@ const center = {
   lng: 11.592090
 };
 
-function MapComp() {
+function Map() {
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: "AIzaSyC8DeAFoQJQRtWbSMaWlIsfdA6r896GOxw"
   });
-
-  
 
   if (!isLoaded) {
     return <h2>Loading...</h2>;
@@ -39,10 +40,4 @@ function MapComp() {
   
 }
 
-
-
-
-
-
-
-export default MapComp
+export default Map

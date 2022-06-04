@@ -1,0 +1,29 @@
+.scrollbar-left{
+  direction: rtl;
+  overflow-y: scroll;
+}
+
+.full-page{
+  max-height: calc(100vh - 56px);
+}
+
+.hide-col{
+  color:#282c34;
+  background-color: #282c34;
+}
+
+.rowMap{
+  justify-content: left;
+  overflow-y: scroll;
+  direction: rtl;
+  max-height: 100vh;
+  display: block;
+  color: black;
+  align-items:baseline;
+  justify-content: left;
+}
+
+.test {
+  background-color: aquamarine;
+  width: 100vw;
+}

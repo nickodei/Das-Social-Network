@@ -11,3 +11,36 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.skip-navbar {
+  margin-top: 56px;
+}
+
+.app-header {
+  background-color: #282c34;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.picture-animation{
+  text-align: center;
+}
+
+
+.picture-animation:hover{
+  animation: animationPicture 2s ease 100ms 1 normal forwards;
+}
+
+@keyframes animationPicture {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}

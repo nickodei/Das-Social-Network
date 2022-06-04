@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Navbar, Nav, NavDropdown, Container, Form, FormControl, Button } from 'react-bootstrap';
-import '../Restaurants.css';
 
 class NavbarComp extends Component {
     render() {
