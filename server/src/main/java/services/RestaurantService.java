@@ -24,7 +24,7 @@ public class RestaurantService
     public List<RestaurantOverviewDto> getAllRestaurants() {
         List<RestaurantOverviewDto> result = this.restaurants.stream().map(restaurant -> {
             RestaurantOverviewDto dto = new RestaurantOverviewDto();
-            dto.Name = restaurant.getName();
+            dto.name = restaurant.getName();
             return dto;
         }).collect(Collectors.toList());
 
