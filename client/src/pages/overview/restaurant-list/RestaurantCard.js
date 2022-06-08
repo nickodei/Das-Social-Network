@@ -2,7 +2,7 @@
 
 function RestaurantCard(props){
     return (
-    <div class="card w-100 mt-3">
+    <div class="card w-100 mt-3" style={{color: "black", textAlign: "right"}}>
       <div class="card-body">
         <h5 class="card-title"><u>{props.name}</u></h5>
         <img class="card-img-top" src={props.src} alt="Image of restaurant"></img>

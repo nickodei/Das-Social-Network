@@ -3,10 +3,10 @@ import React from 'react'
 import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
 
 const containerStyle = {
-  width: "calc(100% - 20px)",
-  height: "calc(100% - 20px)",
-  top: "10px",
-  left: "10px"
+  width: "calc(100% - 40px)",
+  height: "calc(100% - 40px)",
+  top: "20px",
+  left: "20px"
 };
 
 const center = {
@@ -27,7 +27,7 @@ function Map() {
         mapContainerStyle={containerStyle}
         center={center}
         zoom={12}
-        options={{clickableIcons: false}}
+        options={{clickableIcons: false, isFractionalZoomEnabled: true}}
       >
        {/* markers */}
        <Marker

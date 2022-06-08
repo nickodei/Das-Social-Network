@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Navbar, Nav, NavDropdown, Container, Form, FormControl, Button } from 'react-bootstrap';
+import './Navbar.css';
 
 class NavigationBar extends Component {
     state = {
@@ -7,7 +8,7 @@ class NavigationBar extends Component {
       };
     render() {
         return (
-            <Navbar bg="dark" variant="dark" fixed="top">
+            <Navbar bg="dark" variant="dark" fixed="top" className='navbar-set'>
                 <Container fluid>
                     <Navbar.Brand href="#overview" className='picture-animation'>Restaurant Finder</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />

@@ -1,5 +1,3 @@
-import './Overview.css';
-
 const ColoredLine = ({ color, width }) => (
     <hr
         style={{
@@ -14,9 +12,11 @@ const ColoredLine = ({ color, width }) => (
 function Impressum() {
 
     return (
-        <header className="App-header" id='impressum'>
+        <header id='impressum'>
             <div style={{ marginTop: 75 }}></div>
-            <ColoredLine color="white" width={"90%"} />
+            <center>
+                <ColoredLine color="white" width={"90%"} />
+            </center>
             <div className='picture-animation'>
                 <h2 style={{ marginTop: 75 }}>Impressum</h2>
                 <div>Responsible for content $122 BGB:</div>
@@ -25,7 +25,6 @@ function Impressum() {
                 <div>Mail</div>
                 <div>Keine Ahnung</div>
                 <div>Copyright@2022</div>
-                <div style={{ marginTop: 75 }}></div>
             </div>
         </header>
     );
