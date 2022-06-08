@@ -1,27 +1,23 @@
-import React, { Component } from 'react';
+import {useEffect, useState, useRef} from 'react';
 import RestaurantCard from './RestaurantCard';
 
 
-class RestaurantList extends Component {
-  render() {
-    return (
-      <div>
+function RestaurantList() {
+  const [restaurantList, setRestaurantList] = useState([]);
 
-        <RestaurantCard name="PizzaHut"  cuisine="Italian" rating="5.0" location = "Schwabing" src="https://www.docohotel.com/media/163371/do-co-hotel-muenchen-restaurant-2-kopie.jpg" price="$$$" linkDetails="./test.html" linkReservation="..\..\..\pizzahut.html"/>
-        <RestaurantCard name="McDonalds"  cuisine="American" rating="2.3" location = "Maxvorstadt" src="https://www.mux.de/images/1500x1200z/object/70/1156099970/mcdonalds-1.JPG" price="$$"/>
-        <RestaurantCard name="McDonalds"  cuisine="American" rating="2.3" location = "Maxvorstadt" src="https://www.mux.de/images/1500x1200z/object/70/1156099970/mcdonalds-1.JPG" price="$$"/>
-        <RestaurantCard name="McDonalds"  cuisine="American" rating="2.3" location = "Maxvorstadt" src="https://www.mux.de/images/1500x1200z/object/70/1156099970/mcdonalds-1.JPG" price="$$"/>
-        <RestaurantCard name="McDonalds"  cuisine="American" rating="2.3" location = "Maxvorstadt" src="https://www.mux.de/images/1500x1200z/object/70/1156099970/mcdonalds-1.JPG" price="$$"/>
-        <RestaurantCard name="McDonalds"  cuisine="American" rating="2.3" location = "Maxvorstadt" src="https://www.mux.de/images/1500x1200z/object/70/1156099970/mcdonalds-1.JPG" price="$$"/>
-        <RestaurantCard name="McDonalds"  cuisine="American" rating="2.3" location = "Maxvorstadt" src="https://www.mux.de/images/1500x1200z/object/70/1156099970/mcdonalds-1.JPG" price="$$"/>
-        <RestaurantCard name="McDonalds"  cuisine="American" rating="2.3" location = "Maxvorstadt" src="https://www.mux.de/images/1500x1200z/object/70/1156099970/mcdonalds-1.JPG" price="$$"/>
-        <RestaurantCard name="McDonalds"  cuisine="American" rating="2.3" location = "Maxvorstadt" src="https://www.mux.de/images/1500x1200z/object/70/1156099970/mcdonalds-1.JPG" price="$$"/>
-        <RestaurantCard name="McDonalds"  cuisine="American" rating="2.3" location = "Maxvorstadt" src="https://www.mux.de/images/1500x1200z/object/70/1156099970/mcdonalds-1.JPG" price="$$"/>
-        <RestaurantCard name="McDonalds"  cuisine="American" rating="2.3" location = "Maxvorstadt" src="https://www.mux.de/images/1500x1200z/object/70/1156099970/mcdonalds-1.JPG" price="$$"/>
+  useEffect(()=>{
+    fetch('http://localhost:8080/restaurants', {mode:'cors'})
+      .then(response => response.json())
+      .then(setRestaurantList);
+   }, []);
 
-      </div>
-    );
-  }
+  return (
+    <div>
+      {restaurantList.map(restaurant => 
+       <RestaurantCard name={restaurant.name} cuisine="Italian" rating="5.0" location = "Schwabing" src="https://www.docohotel.com/media/163371/do-co-hotel-muenchen-restaurant-2-kopie.jpg" price="$$$" linkDetails="./test.html" linkReservation="..\..\..\pizzahut.html"/>)
+      }
+    </div>
+  );
 }
 
 export default RestaurantList;
