@@ -1,28 +1,24 @@
 package services;
 
 import dtos.RestaurantOverviewDto;
-import entities.Restaurant;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import repositories.RestaurantRepository;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
 public class RestaurantService
 {
-    private List<Restaurant> restaurants = new ArrayList<>();
+    @Autowired
+    RestaurantRepository restaurantRepository;
 
-    public RestaurantService(){
-        restaurants.add(new Restaurant("McDonalds"));
-        restaurants.add(new Restaurant("Hans im Glück"));
-        restaurants.add(new Restaurant("Hans im Glück"));
-        restaurants.add(new Restaurant("Hans im Glück"));
-        restaurants.add(new Restaurant("Hans im Glück"));
+    public RestaurantService() {
     }
 
     public List<RestaurantOverviewDto> getAllRestaurants() {
-        List<RestaurantOverviewDto> result = this.restaurants.stream().map(restaurant -> {
+        List<RestaurantOverviewDto> result = restaurantRepository.findAll().stream().map(restaurant -> {
             RestaurantOverviewDto dto = new RestaurantOverviewDto();
             dto.name = restaurant.getName();
             return dto;

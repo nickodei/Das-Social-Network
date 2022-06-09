@@ -10,16 +10,15 @@ public class Restaurant
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name="id")
-    private int id;
+    private Integer id;
 
     @Column(name="name")
     private String name;
 
-    @Lob
-    @Column(name = "image", columnDefinition = "LONGBLOB", insertable = false, updatable = false)
-    private byte[] image;
-
     @Column(name = "image")
+    private String image;
+
+    @Column(name = "address")
     private String address;
 
     @Column(name = "contact_info")
@@ -44,11 +43,12 @@ public class Restaurant
     public Restaurant() {}
 
     // for mocking
-    public Restaurant(String name) {
+    public Restaurant(String name, Marker marker) {
+        this.marker = marker;
         this.name = name;
     }
 
-    public Restaurant(int id, String name, byte[] image, String address, String contactInfo, PriceCategory priceCategory,
+    public Restaurant(Integer id, String name, String image, String address, String contactInfo, PriceCategory priceCategory,
                       Menu menu, TablePlan tablePlan, Schedule schedule, Marker marker) {
         this.name = name;
         this.id = id;
@@ -78,11 +78,11 @@ public class Restaurant
         return name;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public byte[] getImage() {
+    public String getImage() {
         return image;
     }
 
@@ -108,11 +108,11 @@ public class Restaurant
         this.name = name;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public void setImage(byte[] image) {
+    public void setImage(String image) {
         this.image = image;
     }
 
