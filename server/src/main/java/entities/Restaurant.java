@@ -1,5 +1,7 @@
 package entities;
 
+import entities.dtos.RestaurantOverviewDto;
+
 import javax.persistence.*;
 
 
@@ -15,8 +17,8 @@ public class Restaurant
     @Column(name="name")
     private String name;
 
-    @Column(name = "image")
-    private String image;
+    @Column(name = "imagePath")
+    private String imagePath;
 
     @Column(name = "address")
     private String address;
@@ -24,8 +26,17 @@ public class Restaurant
     @Column(name = "contact_info")
     private String contactInfo;
 
+    @Column(name = "cuisine")
+    private FilterOptions.Cuisine cuisine;
+
+    @Column(name = "rating")
+    private double rating;
+
+    @Column(name = "location")
+    private String location;
+
     @Column(name = "price_category")
-    private PriceCategory priceCategory;
+    private FilterOptions.PriceCategory priceCategory;
 
     @OneToOne(targetEntity = Menu.class)
     private Menu menu;
@@ -39,6 +50,9 @@ public class Restaurant
     @OneToOne(targetEntity = Marker.class)
     private Marker marker;
 
+    @OneToOne(targetEntity = RestaurantOverviewDto.class)
+    private RestaurantOverviewDto restaurantOverviewDto;
+
     // for hibernate
     public Restaurant() {}
 
@@ -48,18 +62,20 @@ public class Restaurant
         this.name = name;
     }
 
-    public Restaurant(Integer id, String name, String image, String address, String contactInfo, PriceCategory priceCategory,
+    public Restaurant(Integer id, String name, String imagePath, String address, String contactInfo, FilterOptions.Cuisine cuisine,  FilterOptions.PriceCategory priceCategory,
                       Menu menu, TablePlan tablePlan, Schedule schedule, Marker marker) {
         this.name = name;
         this.id = id;
-        this.image = image;
+        this.imagePath = imagePath;
         this.address = address;
         this.contactInfo = contactInfo;
+        this.cuisine = cuisine;
         this.priceCategory = priceCategory;
         this.menu = menu;
         this.tablePlan = tablePlan;
         this.schedule = schedule;
         this.marker = marker;
+        this.restaurantOverviewDto = generateRestaurantOverviewDto();
     }
 
     public TablePlan getTablePlan() {
@@ -82,8 +98,8 @@ public class Restaurant
         return id;
     }
 
-    public String getImage() {
-        return image;
+    public String getImagePath() {
+        return imagePath;
     }
 
     public String getAddress() {
@@ -94,8 +110,40 @@ public class Restaurant
         return contactInfo;
     }
 
-    public PriceCategory getPriceCategory() {
+    public FilterOptions.PriceCategory getPriceCategory() {
         return priceCategory;
+    }
+
+    public FilterOptions.Cuisine getCuisine() {
+        return cuisine;
+    }
+
+    public void setCuisine(FilterOptions.Cuisine cuisine) {
+        this.cuisine = cuisine;
+    }
+
+    public double getRating() {
+        return rating;
+    }
+
+    public void setRating(double rating) {
+        this.rating = rating;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public RestaurantOverviewDto getRestaurantOverviewDto() {
+        return restaurantOverviewDto;
+    }
+
+    public void setRestaurantOverviewDto(RestaurantOverviewDto restaurantOverviewDto) {
+        this.restaurantOverviewDto = restaurantOverviewDto;
     }
 
     public Menu getMenu() {
@@ -112,8 +160,8 @@ public class Restaurant
         this.id = id;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setImagePath(String image) {
+        this.imagePath = image;
     }
 
     public void setMarker(Marker marker) {
@@ -128,7 +176,7 @@ public class Restaurant
         this.contactInfo = contactInfo;
     }
 
-    public void setPriceCategory(PriceCategory priceCategory) {
+    public void setPriceCategory(FilterOptions.PriceCategory priceCategory) {
         this.priceCategory = priceCategory;
     }
 
@@ -152,4 +200,10 @@ public class Restaurant
     public boolean equals(Restaurant restaurant){
         return this.getId() == restaurant.getId();
     }
+
+    private RestaurantOverviewDto generateRestaurantOverviewDto(){
+        return new RestaurantOverviewDto(getName(), getImagePath(), getCuisine(), getRating(), getLocation(), getPriceCategory(), getMarker());
+    }
+
+
 }

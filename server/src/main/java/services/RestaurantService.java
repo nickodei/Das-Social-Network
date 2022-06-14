@@ -1,6 +1,8 @@
 package services;
 
-import dtos.RestaurantOverviewDto;
+import entities.dtos.RestaurantOverviewDto;
+import entities.FilterOptions;
+import entities.Restaurant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import repositories.RestaurantRepository;
@@ -17,13 +19,13 @@ public class RestaurantService
     public RestaurantService() {
     }
 
-    public List<RestaurantOverviewDto> getAllRestaurants() {
-        List<RestaurantOverviewDto> result = restaurantRepository.findAll().stream().map(restaurant -> {
-            RestaurantOverviewDto dto = new RestaurantOverviewDto();
-            dto.name = restaurant.getName();
-            return dto;
-        }).collect(Collectors.toList());
+    public List<RestaurantOverviewDto> getAllRestaurants(FilterOptions filterOptions) {
 
-        return result;
+        return restaurantRepository.findAll().stream()
+                .map(Restaurant::getRestaurantOverviewDto)
+                .filter(restaurantOverviewDto -> restaurantOverviewDto.getRating() >= filterOptions.getMinRating())
+                .filter(restaurantOverviewDto -> filterOptions.getCuisine() == FilterOptions.Cuisine.ALL || restaurantOverviewDto.getCuisine() == filterOptions.getCuisine())
+                .filter(restaurantOverviewDto -> filterOptions.getPriceCategory() == FilterOptions.PriceCategory.ALL || restaurantOverviewDto.getPriceCategory() == filterOptions.getPriceCategory())
+                .collect(Collectors.toList());
     }
 }
