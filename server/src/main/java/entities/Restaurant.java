@@ -50,9 +50,6 @@ public class Restaurant
     @OneToOne(targetEntity = Marker.class)
     private Marker marker;
 
-    @OneToOne(targetEntity = RestaurantOverviewDto.class)
-    private RestaurantOverviewDto restaurantOverviewDto;
-
     // for hibernate
     public Restaurant() {}
 
@@ -75,7 +72,6 @@ public class Restaurant
         this.tablePlan = tablePlan;
         this.schedule = schedule;
         this.marker = marker;
-        this.restaurantOverviewDto = generateRestaurantOverviewDto();
     }
 
     public TablePlan getTablePlan() {
@@ -138,14 +134,6 @@ public class Restaurant
         this.location = location;
     }
 
-    public RestaurantOverviewDto getRestaurantOverviewDto() {
-        return restaurantOverviewDto;
-    }
-
-    public void setRestaurantOverviewDto(RestaurantOverviewDto restaurantOverviewDto) {
-        this.restaurantOverviewDto = restaurantOverviewDto;
-    }
-
     public Menu getMenu() {
         return menu;
     }
@@ -201,7 +189,7 @@ public class Restaurant
         return this.getId() == restaurant.getId();
     }
 
-    private RestaurantOverviewDto generateRestaurantOverviewDto(){
+    public RestaurantOverviewDto getRestaurantOverviewDto(){
         return new RestaurantOverviewDto(getName(), getImagePath(), getCuisine(), getRating(), getLocation(), getPriceCategory(), getMarker());
     }
 

@@ -3,44 +3,16 @@ package entities.dtos;
 import entities.FilterOptions;
 import entities.Marker;
 
-import javax.persistence.*;
-
-
-@Entity
-@javax.persistence.Table(name = "restaurantOverviewDto")
 public class RestaurantOverviewDto
 {
-    @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    @Column(name="id")
     private Integer id;
-
-    @Column(name="name")
     private String name;
-
-    @Column(name="imagePath")
     private String imagePath;
-
-    @Column(name="cuisine")
     private FilterOptions.Cuisine cuisine;
-
-    @Column(name="rating")
     private double rating;
-
-    @Column(name="location")
     private String location;
-
-    @Column
     private FilterOptions.PriceCategory priceCategory;
-
-    @OneToOne(targetEntity = Marker.class)
     private Marker marker;
-
-
-
-    public RestaurantOverviewDto(){}
-
-
 
     public RestaurantOverviewDto(String name, String imagePath, FilterOptions.Cuisine cuisine, double rating, String location, FilterOptions.PriceCategory priceCategory, Marker marker) {
         this.name = name;
